@@ -1,0 +1,62 @@
+name: Build and Deploy to VPS
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - staging
+      - production
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.15.0"
+
+      - name: Verify Node.js and npm installation
+        run: |
+          node -v
+          npm -v
+          yarn -v
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build project for staging
+        if: ${{ github.event.pull_request.base.ref == 'staging' }}
+        run: yarn build
+
+      - name: Build project for production
+        if: ${{ github.event.pull_request.base.ref == 'production' }}
+        run: yarn build:production
+
+      - name: Archive production artifacts
+        run: tar -czf build.tar.gz .next public package.json package-lock.json yarn.lock
+
+      - name: Deploy to VPS
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          ENV_FILE: ${{ github.ref == 'refs/heads/staging' && 'env.staging' || 'env.production' }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p $VPS_PORT $VPS_HOST >> ~/.ssh/known_hosts
+          scp -P $VPS_PORT build.tar.gz $VPS_USER@$VPS_HOST:/home/ubuntu/clients/pasar-pintar-client
+          ssh -p $VPS_PORT $VPS_USER@$VPS_HOST "
+            cd /home/ubuntu/clients/pasar-pintar-client &&
+            tar -xzf build.tar.gz &&
+            export PATH=$PATH:/home/ubuntu/.nvm/versions/node/v20.15.0/bin &&
+            yarn install &&
+            pm2 restart web-crawler-scraping-client 
+          "
