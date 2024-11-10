@@ -40,19 +40,29 @@ jobs:
       - name: Archive production artifacts
         run: tar -czf build.tar.gz .next public package.json package-lock.json yarn.lock
 
+      # Retrieve VPS_SECRET_KEY from AWS Secrets Manager
+      - name: Retrieve VPS_SECRET_KEY from AWS Secrets Manager
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          export VPS_SECRET_KEY=$(aws secretsmanager get-secret-value --secret-id my-app/VPS_SECRET_KEY --query SecretString --output text)
+          echo "VPS_SECRET_KEY=$VPS_SECRET_KEY" >> $GITHUB_ENV
+
       - name: Deploy to VPS
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_HOST: ${{ secrets.VPS_HOST }}
           VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_SECRET_KEY: ${{ env.VPS_SECRET_KEY }} # Using the retrieved secret
           ENV_FILE: ${{ github.ref == 'refs/heads/staging' && 'env.staging' || 'env.production' }}
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p $VPS_PORT -m PEM $VPS_HOST >> ~/.ssh/known_hosts
-          scp scp -o "StrictHostKeyChecking=no" -i ~/.ssh/id_rsa -P $VPS_PORT build.tar.gz $VPS_USER@$VPS_HOST:/home/ubuntu/clients/pasar-pintar-client
+          ssh-keyscan -p $VPS_PORT $VPS_HOST >> ~/.ssh/known_hosts
+          scp -P $VPS_PORT build.tar.gz $VPS_USER@$VPS_HOST:/home/ubuntu/clients/pasar-pintar-client
           ssh -p $VPS_PORT $VPS_USER@$VPS_HOST "
             cd /home/ubuntu/clients/pasar-pintar-client &&
             tar -xzf build.tar.gz &&
