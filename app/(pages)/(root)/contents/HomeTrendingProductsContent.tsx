@@ -73,6 +73,7 @@ export default function HomeTrendingProductsContent() {
                     src={product.image}
                     alt={product.name}
                     fill
+                    unoptimized
                     className="aspect-square w-full object-cover"
                   />
                 </AspectRatio>

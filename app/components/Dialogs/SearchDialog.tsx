@@ -116,6 +116,7 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
                           src={result.image}
                           alt={result.title}
                           fill
+                          unoptimized
                           className="w-12 h-12 object-cover rounded"
                         />
                       </AspectRatio>
