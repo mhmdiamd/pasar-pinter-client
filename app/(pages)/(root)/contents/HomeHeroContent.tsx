@@ -39,7 +39,7 @@ export default function HomeHeroContent() {
               </button>
             </div>
 
-            <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3 lg:grid-cols-3">
+            <div className="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-3">
               <div className="flex flex-col items-center">
                 <span className="text-3xl font-bold text-gray-900">1M+</span>
                 <span className="text-sm text-gray-600">Products Analyzed</span>
