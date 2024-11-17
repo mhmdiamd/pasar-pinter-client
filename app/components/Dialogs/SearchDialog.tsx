@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { Command } from "cmdk";
 import { Search, History, TrendingUp, Store, X } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 
 interface SearchResult {
   id: string;
@@ -107,13 +109,16 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
                       key={result.id}
                       value={result.title}
                       onSelect={() => handleSearch(result.title)}
-                      className="flex items-center gap-4 p-2 rounded hover:bg-gray-100 cursor-pointer"
+                      className="flex items-center gap-4 p-2 rounded hover:bg-gray-100 cursor-pointer relative"
                     >
-                      <img
-                        src={result.image}
-                        alt={result.title}
-                        className="w-12 h-12 object-cover rounded"
-                      />
+                      <AspectRatio ratio={1 / 1}>
+                        <Image
+                          src={result.image}
+                          alt={result.title}
+                          fill
+                          className="w-12 h-12 object-cover rounded"
+                        />
+                      </AspectRatio>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
                           {result.title}
