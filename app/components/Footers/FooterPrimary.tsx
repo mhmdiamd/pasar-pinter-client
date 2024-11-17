@@ -44,7 +44,7 @@ export default function FooterPrimary() {
             </p>
           </div>
           <div className="col-span-8 mt-16 gap-8 xl:mt-0">
-            <div className="md:grid md:grid-cols-3 md:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 md:gap-8">
               <div>
                 <h3 className="text-sm font-semibold leading-6 text-white">
                   Resources
@@ -62,7 +62,7 @@ export default function FooterPrimary() {
                   ))}
                 </ul>
               </div>
-              <div className="mt-10 md:mt-0">
+              <div>
                 <h3 className="text-sm font-semibold leading-6 text-white">
                   Product
                 </h3>
