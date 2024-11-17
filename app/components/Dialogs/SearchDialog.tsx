@@ -118,6 +118,7 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
                             alt={result.title}
                             width={48}
                             height={48}
+                            unoptimized
                             className="h-full w-full object-cover rounded"
                           />
                         </AspectRatio>
