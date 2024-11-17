@@ -1,3 +1,35 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "overrides": [
+    {
+      "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
+      "rules": {}
+    },
+    {
+      "files": ["jest.setup.@(js)"],
+      "rules": {
+        "no-undef": "off"
+      }
+    },
+    {
+      "files": ["jest.polyfills.@(js)"],
+      "rules": {
+        "no-undef": "off"
+      }
+    },
+    {
+      "files": ["app/**/*.test.@(ts|tsx|js|jsx|mjs|cjs)"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ],
+  "rules": {
+    "no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }],
+    "no-empty-pattern": "warn",
+    "react-hooks/rules-of-hooks": "off",
+    "react/no-unescaped-entities": "off",
+    "typescript-eslint/no-unused-vars": "warn",
+    "typescript-eslint/no-empty-object-type": "off"
+  }
 }
