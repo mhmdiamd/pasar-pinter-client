@@ -109,17 +109,19 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
                       key={result.id}
                       value={result.title}
                       onSelect={() => handleSearch(result.title)}
-                      className="flex items-center gap-4 p-2 rounded hover:bg-gray-100 cursor-pointer relative"
+                      className="flex items-center gap-4 p-2 rounded hover:bg-gray-100 cursor-pointer"
                     >
-                      <AspectRatio ratio={1 / 1}>
-                        <Image
-                          src={result.image}
-                          alt={result.title}
-                          fill
-                          unoptimized
-                          className="w-12 h-12 object-cover rounded"
-                        />
-                      </AspectRatio>
+                      <div className="h-12 w-12 overflow-clip relative">
+                        <AspectRatio ratio={1 / 1}>
+                          <Image
+                            src={result.image}
+                            alt={result.title}
+                            width={48}
+                            height={48}
+                            className="h-full w-full object-cover rounded"
+                          />
+                        </AspectRatio>
+                      </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
                           {result.title}
