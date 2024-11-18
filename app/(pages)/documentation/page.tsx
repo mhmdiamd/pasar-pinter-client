@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import HowItWorksContent from "./contents/HowItWorksContent";
+import DocumentationContent from "./contents/DocumentationContent";
 import FooterPrimary from "@/app/components/Footers/FooterPrimary";
 
 type Props = {};
@@ -7,9 +7,7 @@ type Props = {};
 const page = (props: Props) => {
   return (
     <Fragment>
-      <main>
-        <HowItWorksContent />
-      </main>
+      <DocumentationContent />
       <FooterPrimary />
     </Fragment>
   );
