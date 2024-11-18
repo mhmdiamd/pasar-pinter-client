@@ -46,7 +46,7 @@ const plans = [
   },
 ];
 
-export default function Pricing() {
+export default function PricingContent() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
