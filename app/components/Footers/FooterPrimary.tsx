@@ -1,4 +1,5 @@
 import { ShoppingBag } from "lucide-react";
+import Link from "next/link";
 
 const navigation = {
   // company: [
@@ -8,14 +9,14 @@ const navigation = {
   //   { name: "Press", href: "#" },
   // ],
   product: [
-    { name: "Features", href: "#" },
-    { name: "How it works", href: "#" },
-    { name: "Pricing", href: "#" },
+    { name: "Features", href: "/features" },
+    { name: "How it works", href: "/how-it-works" },
+    { name: "Pricing", href: "/pricing" },
   ],
   resources: [
-    { name: "Documentation", href: "#" },
-    { name: "Guides", href: "#" },
-    { name: "Support", href: "#" },
+    { name: "Documentation", href: "/documentation" },
+    { name: "Guides", href: "/guides" },
+    { name: "Support", href: "/support" },
   ],
   legal: [
     { name: "Privacy", href: "#" },
@@ -52,12 +53,12 @@ export default function FooterPrimary() {
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.resources.map((item) => (
                     <li key={item.name}>
-                      <a
+                      <Link
                         href={item.href}
                         className="text-sm leading-6 text-gray-300 hover:text-white"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -69,12 +70,12 @@ export default function FooterPrimary() {
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.product.map((item) => (
                     <li key={item.name}>
-                      <a
+                      <Link
                         href={item.href}
                         className="text-sm leading-6 text-gray-300 hover:text-white"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -87,12 +88,12 @@ export default function FooterPrimary() {
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.legal.map((item) => (
                     <li key={item.name}>
-                      <a
+                      <Link
                         href={item.href}
                         className="text-sm leading-6 text-gray-300 hover:text-white"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

@@ -65,7 +65,7 @@ export default function HomeTrendingProductsContent() {
           {products.map((product) => (
             <article
               key={product.id}
-              className="flex flex-col items-start bg-white rounded-lg shadow-sm overflow-hidden "
+              className="flex flex-col items-start bg-white rounded-lg shadow-sm overflow-hidden"
             >
               <div className="relative w-full rounded-t-lg overflow-clip">
                 <AspectRatio ratio={16 / 9}>
@@ -73,8 +73,7 @@ export default function HomeTrendingProductsContent() {
                     src={product.image}
                     alt={product.name}
                     width={500}
-                    height={500}
-                    unoptimized
+                    height={250}
                     className="w-full aspect-square object-cover"
                   />
                 </AspectRatio>

@@ -4,6 +4,7 @@ import { Search, ShoppingBag } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import SearchDialog from "../Dialogs/SearchDialog";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -54,12 +55,18 @@ export default function Navbar() {
               >
                 <Search className="h-5 w-5" />
               </button>
-              <button className="hidden md:inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
-                Sign in
-              </button>
-              <button className="hidden md:inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 h-10 px-4 py-2">
-                Sign up
-              </button>
+              <Button
+                asChild
+                className="hidden md:inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 text-gray-800"
+              >
+                <Link href="/sign-in">Sign in</Link>
+              </Button>
+              <Button
+                asChild
+                className="hidden md:inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 h-10 px-4 py-2"
+              >
+                <Link href="/sign-up">Sign up</Link>
+              </Button>
             </div>
           </div>
         </div>
