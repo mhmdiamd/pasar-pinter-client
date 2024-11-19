@@ -1,14 +1,16 @@
 import React, { Fragment } from "react";
-import FeaturesContent from "./contents/FeaturesContent";
 import FooterPrimary from "@/app/components/Footers/FooterPrimary";
+import RootDashboardContent from "./contents/RootDashboardContent";
 
 type Props = {};
 
 const page = (props: Props) => {
   return (
-<Fragment>
-      <main><FeaturesContent /></main>
-      <FooterPrimary() />
+    <Fragment>
+      <main>
+        <RootDashboardContent />
+      </main>
+      <FooterPrimary />
     </Fragment>
   );
 };
