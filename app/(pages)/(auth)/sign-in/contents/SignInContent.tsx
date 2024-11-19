@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { Mail, Lock, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function SignInContent() {
+  const router = useRouter()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -12,6 +14,12 @@ export default function SignInContent() {
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      localStorage.setItem("auth", JSON.stringify({
+        displayName: "User",
+        email: email
+      }))
+
+      router.push("/dashboard")
     } catch (err) {
       setError("Invalid email or password");
     }
