@@ -3,16 +3,16 @@ import FooterPrimary from "@/app/components/Footers/FooterPrimary";
 import GuideDetailContent, { guides } from "./contents/GuideDetailContent";
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: keyof typeof guides;
-  };
+  }>;
 };
 
-const page = ({ params }: PageProps) => {
+const page = async ({ params }: PageProps) => {
   return (
     <Fragment>
       <main>
-        <GuideDetailContent slug={params?.slug} />
+        <GuideDetailContent slug={(await params)?.slug} />
       </main>
       <FooterPrimary />
     </Fragment>
