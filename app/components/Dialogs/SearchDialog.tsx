@@ -50,6 +50,7 @@ interface SearchDialogProps {
 export default function SearchDialog({ open, onClose }: SearchDialogProps) {
   const router = useRouter();
   const [query, setQuery] = useState("");
+  
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
 
   useEffect(() => {
