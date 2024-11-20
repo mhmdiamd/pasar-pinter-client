@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Mail, Lock, User, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function SignUpContent() {
   const [name, setName] = useState("");

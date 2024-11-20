@@ -45,7 +45,7 @@ const ComingSoonDialog: FC<TProps> = ({ children }) => {
               <p>Thank you for your patience, and we can’t wait to launch!</p>
 
               <ContactUsDrawer>
-                <Button className="w-fit mt-3">Contact us</Button>
+                <button className="w-fit mt-3">Contact us</button>
               </ContactUsDrawer>
             </div>
           </DialogDescription>

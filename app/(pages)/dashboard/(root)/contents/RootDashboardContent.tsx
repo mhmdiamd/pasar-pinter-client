@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Settings, Heart, Bell, Clock } from "lucide-react";
+import { TUser } from "@/lib/types/user";
 
 const savedProducts = [
     {
@@ -43,20 +44,7 @@ const recentActivity = [
 
 export default function RootDashboardContent() {
     const [activeTab, setActiveTab] = useState("overview");
-    // const [currentUser, setCurrentUser] = useState({
-    //     displayName: JSON.parse(localStorage.getItem("auth") as string)?.displayName,
-    //     email: JSON.parse(localStorage.getItem("auth") as string)?.email
-    // });
-
-    const user = useMemo(() => {
-        const name = JSON.parse(localStorage.getItem("auth") as string || "{}")?.displayName
-        const email = JSON.parse(localStorage.getItem("auth") as string || "{}")?.email
-        if (name && email) {
-            return { displayName: name, email }
-        }
-
-        return null
-    }, [localStorage.getItem("auth")])
+    const [user, setUser] = useState<TUser | null>(null);
 
     return (
         <div className="min-h-screen bg-gray-50 pt-20">

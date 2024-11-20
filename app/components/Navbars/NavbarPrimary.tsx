@@ -1,38 +1,29 @@
-'use client'
+"use client";
 
-import { Search, ShoppingBag, Menu, X, Bell, Settings, LogOut } from 'lucide-react';
-import { useMemo, useState } from 'react';
-import { Menu as HeadlessMenu, Transition } from '@headlessui/react';
-import Link from 'next/link';
-import SearchDialog from '../Dialogs/SearchDialog';
+import {
+  Search,
+  ShoppingBag,
+  Menu,
+  X,
+  Bell,
+  Settings,
+  LogOut,
+} from "lucide-react";
+import { useMemo, useState } from "react";
+import { Menu as HeadlessMenu, Transition } from "@headlessui/react";
+import Link from "next/link";
+import SearchDialog from "../Dialogs/SearchDialog";
+import { TUser } from "@/lib/types/user";
 
 export default function Navbar() {
+  const [user, setUser] = useState<TUser | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  // const [currentUser, setCurrentUser] = useState({
-  //   displayName: JSON.parse(localStorage.getItem("auth") as string)?.displayName,
-  //   email: JSON.parse(localStorage.getItem("auth") as string)?.email
-  // });
-
-  const user = useMemo(() => {
-    const name = JSON.parse(localStorage.getItem("auth") as string || "{}")?.displayName
-    const email = JSON.parse(localStorage.getItem("auth") as string || "{}")?.email
-    if (name && email) {
-      return { displayName: name, email }
-    }
-
-    return null
-  }, [localStorage.getItem("auth")])
-
-  const signOut = async () => {
-    localStorage.setItem("auth", "")
-  }
 
   const handleSignOut = async () => {
     try {
-      await signOut();
     } catch (error) {
-      console.error('Error signing out:', error);
+      console.error("Error signing out:", error);
     }
   };
 
@@ -43,14 +34,33 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-20">
             <Link href="/" className="flex items-center space-x-2">
               <ShoppingBag className="h-8 w-8 text-indigo-600" />
-              <span className="text-xl font-bold text-gray-900">PasarPintar</span>
+              <span className="text-xl font-bold text-gray-900">
+                PasarPintar
+              </span>
             </Link>
 
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-indigo-600">Home</Link>
-              <Link href="/how-it-works" className="text-gray-700 hover:text-indigo-600">How it Works</Link>
-              <Link href="/features" className="text-gray-700 hover:text-indigo-600">Features</Link>
-              <Link href="/pricing" className="text-gray-700 hover:text-indigo-600">Pricing</Link>
+              <Link href="/" className="text-gray-700 hover:text-indigo-600">
+                Home
+              </Link>
+              <Link
+                href="/how-it-works"
+                className="text-gray-700 hover:text-indigo-600"
+              >
+                How it Works
+              </Link>
+              <Link
+                href="/features"
+                className="text-gray-700 hover:text-indigo-600"
+              >
+                Features
+              </Link>
+              <Link
+                href="/pricing"
+                className="text-gray-700 hover:text-indigo-600"
+              >
+                Pricing
+              </Link>
             </div>
 
             <div className="hidden md:flex items-center space-x-4">
@@ -70,7 +80,7 @@ export default function Navbar() {
                   <HeadlessMenu as="div" className="relative">
                     <HeadlessMenu.Button className="flex items-center">
                       <img
-                        src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || 'User')}`}
+                        src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || "User")}`}
                         alt="Profile"
                         className="h-8 w-8 rounded-full"
                       />
@@ -89,8 +99,9 @@ export default function Navbar() {
                           {({ active }) => (
                             <Link
                               href="/dashboard/profile"
-                              className={`${active ? 'bg-gray-100' : ''
-                                } flex items-center px-4 py-2 text-sm text-gray-700`}
+                              className={`${
+                                active ? "bg-gray-100" : ""
+                              } flex items-center px-4 py-2 text-sm text-gray-700`}
                             >
                               Profile
                             </Link>
@@ -100,8 +111,9 @@ export default function Navbar() {
                           {({ active }) => (
                             <Link
                               href="/dashboard"
-                              className={`${active ? 'bg-gray-100' : ''
-                                } flex items-center px-4 py-2 text-sm text-gray-700`}
+                              className={`${
+                                active ? "bg-gray-100" : ""
+                              } flex items-center px-4 py-2 text-sm text-gray-700`}
                             >
                               Dashboard
                             </Link>
@@ -111,8 +123,9 @@ export default function Navbar() {
                           {({ active }) => (
                             <Link
                               href="/dashboard/saved-products"
-                              className={`${active ? 'bg-gray-100' : ''
-                                } flex items-center px-4 py-2 text-sm text-gray-700`}
+                              className={`${
+                                active ? "bg-gray-100" : ""
+                              } flex items-center px-4 py-2 text-sm text-gray-700`}
                             >
                               Saved Products
                             </Link>
@@ -122,8 +135,9 @@ export default function Navbar() {
                           {({ active }) => (
                             <Link
                               href="/settings"
-                              className={`${active ? 'bg-gray-100' : ''
-                                } flex items-center px-4 py-2 text-sm text-gray-700`}
+                              className={`${
+                                active ? "bg-gray-100" : ""
+                              } flex items-center px-4 py-2 text-sm text-gray-700`}
                             >
                               <Settings className="h-4 w-4 mr-2" />
                               Settings
@@ -134,8 +148,9 @@ export default function Navbar() {
                           {({ active }) => (
                             <button
                               onClick={handleSignOut}
-                              className={`${active ? 'bg-gray-100' : ''
-                                } flex w-full items-center px-4 py-2 text-sm text-gray-700`}
+                              className={`${
+                                active ? "bg-gray-100" : ""
+                              } flex w-full items-center px-4 py-2 text-sm text-gray-700`}
                             >
                               <LogOut className="h-4 w-4 mr-2" />
                               Sign out
@@ -148,10 +163,16 @@ export default function Navbar() {
                 </div>
               ) : (
                 <div className="flex items-center space-x-4">
-                  <Link href="/sign-in" className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
+                  <Link
+                    href="/sign-in"
+                    className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                  >
                     Sign in
                   </Link>
-                  <Link href="/sign-up" className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 h-10 px-4 py-2">
+                  <Link
+                    href="/sign-up"
+                    className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 h-10 px-4 py-2"
+                  >
                     Sign up
                   </Link>
                 </div>
@@ -182,13 +203,15 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         <div
-          className={`fixed inset-0 bg-gray-800/50 z-50 transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            }`}
+          className={`fixed inset-0 bg-gray-800/50 z-50 transition-opacity duration-300 ${
+            mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
-            className={`fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl transform transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-              }`}
+            className={`fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl transform transition-transform duration-300 ${
+              mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-4 border-b">
@@ -206,7 +229,7 @@ export default function Navbar() {
                 <>
                   <div className="flex items-center space-x-3 mb-6 p-4 bg-gray-50 rounded-lg">
                     <img
-                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || 'User')}`}
+                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || "User")}`}
                       alt="Profile"
                       className="h-10 w-10 rounded-full"
                     />

@@ -6,23 +6,20 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function SignInContent() {
-  const router = useRouter()
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      localStorage.setItem("auth", JSON.stringify({
-        displayName: "User",
-        email: email
-      }))
 
-      router.push("/dashboard")
-    } catch (err) {
-      setError("Invalid email or password");
-    }
+    router.push("/dashboard");
+    // try {
+    //   router.push("/dashboard");
+    // } catch (err) {
+    //   setError("Invalid email or password");
+    // }
   };
 
   const handleGoogleSignIn = async () => {
@@ -124,12 +121,12 @@ export default function SignInContent() {
               </div>
 
               <div className="text-sm">
-                <a
+                <Link
                   href="#"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot your password?
-                </a>
+                </Link>
               </div>
             </div>
 
