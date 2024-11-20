@@ -14,13 +14,11 @@ import { Menu as HeadlessMenu, Transition } from "@headlessui/react";
 import Link from "next/link";
 import SearchDialog from "../Dialogs/SearchDialog";
 import { TUser } from "@/lib/types/user";
-import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   const [user, setUser] = useState<TUser | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
- 
 
   const handleSignOut = async () => {
     try {
@@ -71,13 +69,13 @@ export default function Navbar() {
                 className="text-gray-700 hover:text-indigo-600 p-2 rounded-full hover:bg-gray-100"
               >
                 <Search className="h-5 w-5" />
-              </Button>
+              </button>
 
               {user ? (
                 <div className="flex items-center space-x-4">
                   <button className="text-gray-700 hover:text-indigo-600 p-2 rounded-full hover:bg-gray-100">
                     <Bell className="h-5 w-5" />
-                  </Button>
+                  </button>
 
                   <HeadlessMenu as="div" className="relative">
                     <HeadlessMenu.Button className="flex items-center">
@@ -156,7 +154,7 @@ export default function Navbar() {
                             >
                               <LogOut className="h-4 w-4 mr-2" />
                               Sign out
-                            </Button>
+                            </button>
                           )}
                         </HeadlessMenu.Item>
                       </HeadlessMenu.Items>
@@ -188,7 +186,7 @@ export default function Navbar() {
                 className="text-gray-700 hover:text-indigo-600 p-2 rounded-full hover:bg-gray-100 mr-2"
               >
                 <Search className="h-5 w-5" />
-              </Button>
+              </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="text-gray-700 hover:text-indigo-600 p-2"
@@ -198,7 +196,7 @@ export default function Navbar() {
                 ) : (
                   <Menu className="h-6 w-6" />
                 )}
-              </Button>
+              </button>
             </div>
           </div>
         </div>
@@ -223,7 +221,7 @@ export default function Navbar() {
                 className="p-2 text-gray-500 hover:text-gray-700"
               >
                 <X className="h-6 w-6" />
-              </Button>
+              </button>
             </div>
 
             <div className="px-4 py-6 bg-white/80 backdrop-blur-md">
@@ -277,7 +275,7 @@ export default function Navbar() {
                       className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
                     >
                       Sign out
-                    </Button>
+                    </button>
                   </div>
                 </>
               ) : (
@@ -337,4 +335,3 @@ export default function Navbar() {
     </>
   );
 }
-
