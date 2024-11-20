@@ -9,6 +9,7 @@ import {
   Phone,
   MessagesSquare,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const faqs = [
   {

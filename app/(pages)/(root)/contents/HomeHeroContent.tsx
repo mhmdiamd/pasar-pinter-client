@@ -3,6 +3,7 @@
 import { Fragment, useState } from "react";
 import { Search } from "lucide-react";
 import SearchDialog from "@/app/components/Dialogs/SearchDialog";
+import { Button } from "@/components/ui/button";
 
 export default function HomeHeroContent() {
   const [searchOpen, setSearchOpen] = useState(false);

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Star, Heart, Share2, MessageSquare, Brain, TrendingUp, ShoppingCart, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 // Mock product data
 const product = {

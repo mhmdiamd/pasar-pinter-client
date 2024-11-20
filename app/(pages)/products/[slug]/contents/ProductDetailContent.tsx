@@ -1,33 +1,56 @@
-'use client'
+"use client";
 
-import { useState } from 'react';
-import { Star, Heart, Share2, MessageSquare, Brain, TrendingUp, ShoppingCart, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { useState } from "react";
+import ProductRecommendationsSection from "../components/sections/ProductRecommendationsSection";
+import {
+  Star,
+  Heart,
+  Share2,
+  MessageSquare,
+  Brain,
+  TrendingUp,
+  ShoppingCart,
+  Facebook,
+  Twitter,
+  Linkedin,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // Mock product data
 const product = {
-  id: '1',
-  name: 'Sony WH-1000XM4 Wireless Noise-Canceling Headphones',
-  price: 348.00,
+  id: "1",
+  name: "Sony WH-1000XM4 Wireless Noise-Canceling Headphones",
+  price: 348.0,
   rating: 4.8,
   reviews: 2457,
-  description: 'Industry-leading noise canceling with Dual Noise Sensor technology...',
+  description:
+    "Industry-leading noise canceling with Dual Noise Sensor technology...",
+  category: "Headphones",
   images: [
-    'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=1000',
-    'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=1000',
+    "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=1000",
+    "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&q=80&w=1000",
   ],
   aiAnalysis: {
     overallScore: 92,
     priceAnalysis: {
       fairness: 85,
       history: [
-        { date: '2024-01', price: 349.99 },
-        { date: '2024-02', price: 348.00 },
+        { date: "2024-01", price: 349.99 },
+        { date: "2024-02", price: 348.0 },
       ],
     },
     qualityScore: 95,
-    features: ['Active Noise Cancellation', 'Bluetooth 5.0', '30-hour Battery Life'],
-    pros: ['Excellent noise cancellation', 'Great sound quality', 'Comfortable fit'],
-    cons: ['Expensive', 'Limited water resistance'],
+    features: [
+      "Active Noise Cancellation",
+      "Bluetooth 5.0",
+      "30-hour Battery Life",
+    ],
+    pros: [
+      "Excellent noise cancellation",
+      "Great sound quality",
+      "Comfortable fit",
+    ],
+    cons: ["Expensive", "Limited water resistance"],
   },
 };
 
@@ -35,43 +58,53 @@ const comments = [
   {
     id: 1,
     user: {
-      name: 'Sarah Johnson',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100',
+      name: "Sarah Johnson",
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100",
     },
-    content: 'These headphones are amazing! The noise cancellation is incredible.',
+    content:
+      "These headphones are amazing! The noise cancellation is incredible.",
     rating: 5,
-    date: '2 days ago',
+    date: "2 days ago",
   },
   {
     id: 2,
     user: {
-      name: 'Michael Chen',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100',
+      name: "Michael Chen",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
     },
-    content: 'Great sound quality but a bit pricey.',
+    content: "Great sound quality but a bit pricey.",
     rating: 4,
-    date: '1 week ago',
+    date: "1 week ago",
   },
 ];
 
-export default function ProductDetailContent() {
+export default function ProductDetail() {
+  const [id, setId] = useState("12");
   const [selectedImage, setSelectedImage] = useState(0);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const [showShareMenu, setShowShareMenu] = useState(false);
 
   const handleShare = (platform: string) => {
     const url = window.location.href;
     const text = `Check out ${product.name}!`;
-    
+
     switch (platform) {
-      case 'facebook':
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+      case "facebook":
+        window.open(
+          `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+        );
         break;
-      case 'twitter':
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+      case "twitter":
+        window.open(
+          `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+        );
         break;
-      case 'linkedin':
-        window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(text)}`);
+      case "linkedin":
+        window.open(
+          `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(text)}`,
+        );
         break;
     }
   };
@@ -97,10 +130,16 @@ export default function ProductDetailContent() {
                     key={index}
                     onClick={() => setSelectedImage(index)}
                     className={`w-20 h-20 rounded-lg overflow-hidden border-2 ${
-                      selectedImage === index ? 'border-indigo-600' : 'border-transparent'
+                      selectedImage === index
+                        ? "border-indigo-600"
+                        : "border-transparent"
                     }`}
                   >
-                    <img src={image} alt={`${product.name} ${index + 1}`} className="w-full h-full object-cover" />
+                    <img
+                      src={image}
+                      alt={`${product.name} ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
                   </button>
                 ))}
               </div>
@@ -110,7 +149,9 @@ export default function ProductDetailContent() {
             <div className="space-y-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <h1 className="text-2xl font-bold text-gray-900">{product.name}</h1>
+                  <h1 className="text-2xl font-bold text-gray-900">
+                    {product.name}
+                  </h1>
                   <div className="mt-2 flex items-center gap-2">
                     <div className="flex items-center">
                       {Array.from({ length: 5 }).map((_, i) => (
@@ -118,8 +159,8 @@ export default function ProductDetailContent() {
                           key={i}
                           className={`w-5 h-5 ${
                             i < Math.floor(product.rating)
-                              ? 'text-yellow-400 fill-current'
-                              : 'text-gray-300'
+                              ? "text-yellow-400 fill-current"
+                              : "text-gray-300"
                           }`}
                         />
                       ))}
@@ -144,21 +185,21 @@ export default function ProductDetailContent() {
                       <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                         <div className="py-1">
                           <button
-                            onClick={() => handleShare('facebook')}
+                            onClick={() => handleShare("facebook")}
                             className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           >
                             <Facebook className="w-4 h-4 mr-2" />
                             Share on Facebook
                           </button>
                           <button
-                            onClick={() => handleShare('twitter')}
+                            onClick={() => handleShare("twitter")}
                             className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           >
                             <Twitter className="w-4 h-4 mr-2" />
                             Share on Twitter
                           </button>
                           <button
-                            onClick={() => handleShare('linkedin')}
+                            onClick={() => handleShare("linkedin")}
                             className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                           >
                             <Linkedin className="w-4 h-4 mr-2" />
@@ -172,7 +213,9 @@ export default function ProductDetailContent() {
               </div>
 
               <div className="border-t border-b py-4">
-                <span className="text-3xl font-bold text-gray-900">${product.price}</span>
+                <span className="text-3xl font-bold text-gray-900">
+                  ${product.price}
+                </span>
               </div>
 
               <p className="text-gray-600">{product.description}</p>
@@ -196,16 +239,22 @@ export default function ProductDetailContent() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Overall Score */}
               <div className="p-6 bg-gray-50 rounded-lg">
-                <h3 className="text-sm font-medium text-gray-500 mb-2">Overall Score</h3>
+                <h3 className="text-sm font-medium text-gray-500 mb-2">
+                  Overall Score
+                </h3>
                 <div className="flex items-center">
-                  <div className="text-4xl font-bold text-indigo-600">{product.aiAnalysis.overallScore}</div>
+                  <div className="text-4xl font-bold text-indigo-600">
+                    {product.aiAnalysis.overallScore}
+                  </div>
                   <div className="ml-2 text-sm text-gray-600">/100</div>
                 </div>
               </div>
 
               {/* Price Analysis */}
               <div className="p-6 bg-gray-50 rounded-lg">
-                <h3 className="text-sm font-medium text-gray-500 mb-2">Price Analysis</h3>
+                <h3 className="text-sm font-medium text-gray-500 mb-2">
+                  Price Analysis
+                </h3>
                 <div className="flex items-center">
                   <TrendingUp className="w-5 h-5 text-green-500 mr-2" />
                   <span className="text-green-500 font-medium">Fair Price</span>
@@ -217,9 +266,13 @@ export default function ProductDetailContent() {
 
               {/* Quality Score */}
               <div className="p-6 bg-gray-50 rounded-lg">
-                <h3 className="text-sm font-medium text-gray-500 mb-2">Quality Score</h3>
+                <h3 className="text-sm font-medium text-gray-500 mb-2">
+                  Quality Score
+                </h3>
                 <div className="flex items-center">
-                  <div className="text-4xl font-bold text-indigo-600">{product.aiAnalysis.qualityScore}</div>
+                  <div className="text-4xl font-bold text-indigo-600">
+                    {product.aiAnalysis.qualityScore}
+                  </div>
                   <div className="ml-2 text-sm text-gray-600">/100</div>
                 </div>
               </div>
@@ -231,7 +284,10 @@ export default function ProductDetailContent() {
                 <h3 className="text-lg font-medium text-gray-900 mb-4">Pros</h3>
                 <ul className="space-y-2">
                   {product.aiAnalysis.pros.map((pro, index) => (
-                    <li key={index} className="flex items-center text-green-600">
+                    <li
+                      key={index}
+                      className="flex items-center text-green-600"
+                    >
                       <div className="w-1.5 h-1.5 rounded-full bg-green-600 mr-2" />
                       {pro}
                     </li>
@@ -253,6 +309,14 @@ export default function ProductDetailContent() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Product Recommendations */}
+        <div className="mt-8">
+          <ProductRecommendationsSection
+            currentProductId={id || ""}
+            category={product.category}
+          />
         </div>
 
         {/* Comments Section */}
@@ -293,15 +357,21 @@ export default function ProductDetailContent() {
                   />
                   <div>
                     <div className="flex items-center gap-2">
-                      <h4 className="font-medium text-gray-900">{comment.user.name}</h4>
-                      <span className="text-sm text-gray-500">{comment.date}</span>
+                      <h4 className="font-medium text-gray-900">
+                        {comment.user.name}
+                      </h4>
+                      <span className="text-sm text-gray-500">
+                        {comment.date}
+                      </span>
                     </div>
                     <div className="flex items-center mt-1">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
                           key={i}
                           className={`w-4 h-4 ${
-                            i < comment.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+                            i < comment.rating
+                              ? "text-yellow-400 fill-current"
+                              : "text-gray-300"
                           }`}
                         />
                       ))}
@@ -317,3 +387,4 @@ export default function ProductDetailContent() {
     </div>
   );
 }
+

@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 const plans = [
   {
@@ -116,7 +117,7 @@ export default function PricingContent() {
                   ))}
                 </ul>
               </div>
-              <a
+              <Link
                 href="#"
                 className={`mt-8 block rounded-md px-3 py-2 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
                   plan.featured
@@ -125,7 +126,7 @@ export default function PricingContent() {
                 }`}
               >
                 Get started
-              </a>
+              </Link>
             </div>
           ))}
         </div>

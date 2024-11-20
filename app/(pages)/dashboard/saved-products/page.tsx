@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import FooterPrimary from "@/app/components/Footers/FooterPrimary";
-import SupportContent from "./contents/SupportContent";
+import SavedProductsContent from "./contents/SavedProductsContent";
 
 type Props = {};
 
@@ -8,7 +8,7 @@ const page = (props: Props) => {
   return (
     <Fragment>
       <main>
-        <SupportContent />
+        <SavedProductsContent />
       </main>
       <FooterPrimary />
     </Fragment>

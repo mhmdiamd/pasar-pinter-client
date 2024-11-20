@@ -1,6 +1,6 @@
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Heart } from "lucide-react";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Heart, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 const products = [
   {
@@ -45,7 +45,7 @@ const products = [
   },
 ];
 
-export default function HomeTrendingProductsContent() {
+export default function TrendingProducts() {
   return (
     <div className="bg-gray-50 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -61,22 +61,18 @@ export default function HomeTrendingProductsContent() {
           </p>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-4">
           {products.map((product) => (
             <article
               key={product.id}
               className="flex flex-col items-start bg-white rounded-lg shadow-sm overflow-hidden"
             >
-              <div className="relative w-full rounded-t-lg overflow-clip">
-                <AspectRatio ratio={16 / 9}>
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    unoptimized
-                    className="w-full aspect-square object-cover"
-                  />
-                </AspectRatio>
+              <div className="relative w-full">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="aspect-square w-full object-cover"
+                />
                 <button className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white">
                   <Heart className="h-5 w-5 text-gray-600 hover:text-red-500" />
                 </button>
@@ -95,11 +91,18 @@ export default function HomeTrendingProductsContent() {
                 <h3 className="text-lg font-medium text-gray-900 mb-2">
                   {product.name}
                 </h3>
-                <div className="flex items-center text-sm text-gray-500">
+                <div className="flex items-center text-sm text-gray-500 mb-4">
                   <span className="flex items-center">
                     {product.rating} ★ ({product.reviews} reviews)
                   </span>
                 </div>
+                <Link
+                  href={`/products/${product.id}`}
+                  className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 mt-auto"
+                >
+                  View Details
+                  <ExternalLink className="h-4 w-4" />
+                </Link>
               </div>
             </article>
           ))}

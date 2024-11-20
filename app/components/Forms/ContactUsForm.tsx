@@ -90,9 +90,9 @@ export function ContactUsForm() {
           )}
         />
         <div className="flex">
-          <Button className="w-full" type="submit">
+          <button className="w-full" type="submit">
             Send
-          </Button>
+          </button>
         </div>
       </form>
     </Form>

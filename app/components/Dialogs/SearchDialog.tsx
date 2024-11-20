@@ -6,6 +6,7 @@ import { Search, History, TrendingUp, Store, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
+import { Button } from "@/components/ui/button";
 
 interface SearchResult {
   id: string;
@@ -70,7 +71,7 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
   const handleSearch = (value: string) => {
     if (value.trim()) {
       addToRecentSearches(value);
-      router.push(`/search?q=${encodeURIComponent(value)}`);
+      router.push(`/products/search?q=${encodeURIComponent(value)}`);
       onClose();
     }
   };
