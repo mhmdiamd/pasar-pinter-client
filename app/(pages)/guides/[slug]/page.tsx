@@ -2,13 +2,13 @@ import React, { Fragment } from "react";
 import FooterPrimary from "@/app/components/Footers/FooterPrimary";
 import GuideDetailContent, { guides } from "./contents/GuideDetailContent";
 
-type Props = {
+type PageProps = {
   params: {
     slug: keyof typeof guides;
   };
 };
 
-const page = ({ params }: Props) => {
+const page = ({ params }: PageProps) => {
   return (
     <Fragment>
       <main>
