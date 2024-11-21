@@ -19,10 +19,9 @@ const navigation = {
     { name: "Support", href: "/support" },
   ],
   legal: [
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
-    { name: "Cookie Policy", href: "#" },
-    { name: "Licenses", href: "#" },
+    { name: "Privacy", href: "/privacy" },
+    { name: "Terms", href: "/tnc" },
+    { name: "Cookie Policy", href: "/cookie-policy" },
   ],
 };
 

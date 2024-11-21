@@ -14,6 +14,7 @@ import { Menu as HeadlessMenu, Transition } from "@headlessui/react";
 import Link from "next/link";
 import SearchDialog from "../Dialogs/SearchDialog";
 import { TUser } from "@/lib/types/user";
+import AnimatedButton from "../Animations/AnimatedButton";
 
 export default function Navbar() {
   const [user, setUser] = useState<TUser | null>(null);
@@ -163,18 +164,23 @@ export default function Navbar() {
                 </div>
               ) : (
                 <div className="flex items-center space-x-4">
-                  <Link
-                    href="/sign-in"
-                    className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-                  >
-                    Sign in
-                  </Link>
-                  <Link
-                    href="/sign-up"
-                    className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 h-10 px-4 py-2"
-                  >
-                    Sign up
-                  </Link>
+                  <AnimatedButton>
+                    <Link
+                      href="/sign-in"
+                      className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                    >
+                      Sign in
+                    </Link>
+                  </AnimatedButton>
+
+                  <AnimatedButton>
+                    <Link
+                      href="/sign-up"
+                      className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 h-10 px-4 py-2"
+                    >
+                      Sign up
+                    </Link>
+                  </AnimatedButton>
                 </div>
               )}
             </div>

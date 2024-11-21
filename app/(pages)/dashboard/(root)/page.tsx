@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import FooterPrimary from "@/app/components/Footers/FooterPrimary";
 import RootDashboardContent from "./contents/RootDashboardContent";
+import AnimatedPage from "@/app/components/Animations/AnimatedPage";
 
 type Props = {};
 

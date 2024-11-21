@@ -1,3 +1,5 @@
+import AnimatedCard from "@/app/components/Animations/AnimatedCard";
+import AnimatedText from "@/app/components/Animations/AnimatedText";
 import { Brain, LineChart, Share2, ShoppingBag, Star, Zap } from "lucide-react";
 
 const features = [
@@ -56,9 +58,11 @@ export default function FeaturesContent() {
       <div className="relative isolate overflow-hidden bg-gradient-to-r from-indigo-600 to-indigo-800">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Features
-            </h1>
+            <AnimatedText>
+              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                Features
+              </h1>
+            </AnimatedText>
             <p className="mt-6 text-lg leading-8 text-gray-300">
               Explore our comprehensive set of features designed to help you
               make smarter shopping decisions.
@@ -77,30 +81,32 @@ export default function FeaturesContent() {
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {features.map((feature) => (
-            <div key={feature.name} className="relative">
-              <div className="rounded-2xl border border-gray-200 p-8 h-full">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-600">
-                  <feature.icon
-                    className="h-6 w-6 text-white"
-                    aria-hidden="true"
-                  />
+            <AnimatedCard key={feature.name}>
+              <div className="relative">
+                <div className="rounded-2xl border border-gray-200 p-8 h-full">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-600">
+                    <feature.icon
+                      className="h-6 w-6 text-white"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <h2 className="mt-6 text-2xl font-semibold leading-7 text-gray-900">
+                    {feature.name}
+                  </h2>
+                  <p className="mt-2 text-base leading-7 text-gray-600">
+                    {feature.description}
+                  </p>
+                  <ul className="mt-8 space-y-3">
+                    {feature.features.map((item) => (
+                      <li key={item} className="flex items-center">
+                        <div className="h-1.5 w-1.5 rounded-full bg-indigo-600 mr-2" />
+                        <span className="text-sm text-gray-600">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h2 className="mt-6 text-2xl font-semibold leading-7 text-gray-900">
-                  {feature.name}
-                </h2>
-                <p className="mt-2 text-base leading-7 text-gray-600">
-                  {feature.description}
-                </p>
-                <ul className="mt-8 space-y-3">
-                  {feature.features.map((item) => (
-                    <li key={item} className="flex items-center">
-                      <div className="h-1.5 w-1.5 rounded-full bg-indigo-600 mr-2" />
-                      <span className="text-sm text-gray-600">{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
+            </AnimatedCard>
           ))}
         </div>
       </div>
