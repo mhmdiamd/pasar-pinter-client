@@ -9,7 +9,7 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Menu as HeadlessMenu, Transition } from "@headlessui/react";
 import Link from "next/link";
 import SearchDialog from "../Dialogs/SearchDialog";
@@ -17,7 +17,12 @@ import { TUser } from "@/lib/types/user";
 import AnimatedButton from "../Animations/AnimatedButton";
 
 export default function Navbar() {
-  const [user, setUser] = useState<TUser | null>({});
+  const [user, setUser] = useState<TUser | null>({
+    displayName: "Kelompok 16",
+    email: "kelompok16@pasarpintar.site",
+    phone: "+62-896-1234-4321",
+    bio: "Tes Bio",
+  });
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
