@@ -1,3 +1,4 @@
+import AnimatedText from "@/app/components/Animations/AnimatedText";
 import { Book, Code, Database, Lock } from "lucide-react";
 import Link from "next/link";
 
@@ -51,9 +52,11 @@ export default function DocumentationContent() {
       <div className="relative isolate overflow-hidden bg-gradient-to-r from-indigo-600 to-indigo-800">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Documentation
-            </h1>
+            <AnimatedText>
+              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                Documentation
+              </h1>
+            </AnimatedText>
             <p className="mt-6 text-lg leading-8 text-gray-300">
               Everything you need to know about our platform
             </p>

@@ -1,3 +1,4 @@
+import AnimatedText from "@/app/components/Animations/AnimatedText";
 import { Search, Brain, LineChart } from "lucide-react";
 
 const steps = [
@@ -31,9 +32,11 @@ export default function HowItWorksContent() {
       <div className="relative isolate overflow-hidden bg-gradient-to-r from-indigo-600 to-indigo-800">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              How It Works
-            </h1>
+            <AnimatedText>
+              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                How It Works
+              </h1>
+            </AnimatedText>
             <p className="mt-6 text-lg leading-8 text-gray-300">
               Discover how our AI-powered platform helps you make smarter
               shopping decisions with comprehensive product analysis and

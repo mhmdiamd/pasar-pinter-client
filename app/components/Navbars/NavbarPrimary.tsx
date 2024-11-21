@@ -9,14 +9,20 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Menu as HeadlessMenu, Transition } from "@headlessui/react";
 import Link from "next/link";
 import SearchDialog from "../Dialogs/SearchDialog";
 import { TUser } from "@/lib/types/user";
+import AnimatedButton from "../Animations/AnimatedButton";
 
 export default function Navbar() {
-  const [user, setUser] = useState<TUser | null>(null);
+  const [user, setUser] = useState<TUser | null>({
+    displayName: "Kelompok 16",
+    email: "kelompok16@pasarpintar.site",
+    phone: "+62-896-1234-4321",
+    bio: "Tes Bio",
+  });
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -163,18 +169,23 @@ export default function Navbar() {
                 </div>
               ) : (
                 <div className="flex items-center space-x-4">
-                  <Link
-                    href="/sign-in"
-                    className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
-                  >
-                    Sign in
-                  </Link>
-                  <Link
-                    href="/sign-up"
-                    className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 h-10 px-4 py-2"
-                  >
-                    Sign up
-                  </Link>
+                  <AnimatedButton>
+                    <Link
+                      href="/sign-in"
+                      className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                    >
+                      Sign in
+                    </Link>
+                  </AnimatedButton>
+
+                  <AnimatedButton>
+                    <Link
+                      href="/sign-up"
+                      className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 h-10 px-4 py-2"
+                    >
+                      Sign up
+                    </Link>
+                  </AnimatedButton>
                 </div>
               )}
             </div>
@@ -209,7 +220,7 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
-            className={`fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl transform transition-transform duration-300 ${
+            className={`fixed inset-y-0 right-0 w-full bg-white shadow-xl transform transition-transform duration-300 ${
               mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -224,10 +235,10 @@ export default function Navbar() {
               </button>
             </div>
 
-            <div className="px-4 py-6 bg-white/80 backdrop-blur-md">
+            <div className="w-full px-4 py-6 bg-white shadow-lg shadow-indigo-100">
               {user ? (
                 <>
-                  <div className="flex items-center space-x-3 mb-6 p-4 bg-gray-50 rounded-lg">
+                  <div className="w-full flex items-center space-x-3 mb-6 p-4 bg-gray-50 rounded-lg">
                     <img
                       src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || "User")}`}
                       alt="Profile"
@@ -279,7 +290,7 @@ export default function Navbar() {
                   </div>
                 </>
               ) : (
-                <div className="space-y-1">
+                <div className="space-y-1 w-full bg-white/80">
                   <Link
                     href="/"
                     className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"

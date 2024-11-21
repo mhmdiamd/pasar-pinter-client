@@ -1,3 +1,4 @@
+import AnimatedCard from "@/app/components/Animations/AnimatedCard";
 import { Button } from "@/components/ui/button";
 import { Heart, ExternalLink } from "lucide-react";
 import Link from "next/link";
@@ -63,48 +64,47 @@ export default function TrendingProducts() {
 
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-4">
           {products.map((product) => (
-            <article
-              key={product.id}
-              className="flex flex-col items-start bg-white rounded-lg shadow-sm overflow-hidden"
-            >
-              <div className="relative w-full">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="aspect-square w-full object-cover"
-                />
-                <button className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white">
-                  <Heart className="h-5 w-5 text-gray-600 hover:text-red-500" />
-                </button>
-              </div>
-              <div className="p-4 flex flex-col flex-1 w-full">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-lg font-semibold text-gray-900">
-                    {product.price}
-                  </span>
-                  <div className="flex items-center">
-                    <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                      AI Score: {product.aiScore}
+            <AnimatedCard key={product.id}>
+              <article className="flex flex-col items-start bg-white rounded-lg shadow-sm overflow-hidden">
+                <div className="relative w-full">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="aspect-square w-full object-cover"
+                  />
+                  <button className="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white">
+                    <Heart className="h-5 w-5 text-gray-600 hover:text-red-500" />
+                  </button>
+                </div>
+                <div className="p-4 flex flex-col flex-1 w-full">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-lg font-semibold text-gray-900">
+                      {product.price}
+                    </span>
+                    <div className="flex items-center">
+                      <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        AI Score: {product.aiScore}
+                      </div>
                     </div>
                   </div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    {product.name}
+                  </h3>
+                  <div className="flex items-center text-sm text-gray-500 mb-4">
+                    <span className="flex items-center">
+                      {product.rating} ★ ({product.reviews} reviews)
+                    </span>
+                  </div>
+                  <Link
+                    href={`/products/${product.id}`}
+                    className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 mt-auto"
+                  >
+                    View Details
+                    <ExternalLink className="h-4 w-4" />
+                  </Link>
                 </div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
-                  {product.name}
-                </h3>
-                <div className="flex items-center text-sm text-gray-500 mb-4">
-                  <span className="flex items-center">
-                    {product.rating} ★ ({product.reviews} reviews)
-                  </span>
-                </div>
-                <Link
-                  href={`/products/${product.id}`}
-                  className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 mt-auto"
-                >
-                  View Details
-                  <ExternalLink className="h-4 w-4" />
-                </Link>
-              </div>
-            </article>
+              </article>
+            </AnimatedCard>
           ))}
         </div>
       </div>

@@ -1,3 +1,4 @@
+import AnimatedButton from "@/app/components/Animations/AnimatedButton";
 import Link from "next/link";
 
 export default function HomeCallToActionContent() {
@@ -13,12 +14,14 @@ export default function HomeCallToActionContent() {
             analyze and track products across multiple e-commerce platforms.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Link
-              href="#"
-              className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Get started
-            </Link>
+            <AnimatedButton>
+              <Link
+                href="#"
+                className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Get started
+              </Link>
+            </AnimatedButton>
             <Link
               href="#"
               className="text-sm font-semibold leading-6 text-white"

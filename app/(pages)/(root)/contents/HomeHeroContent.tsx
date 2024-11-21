@@ -10,7 +10,7 @@ export default function HomeHeroContent() {
 
   return (
     <Fragment>
-      <div id="hero" className="relative isolate pt-14">
+      <div className="relative isolate pt-14">
         <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-indigo-200 to-indigo-400 opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
         </div>
@@ -40,7 +40,7 @@ export default function HomeHeroContent() {
               </button>
             </div>
 
-            <div className="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-3">
+            <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3 lg:grid-cols-3">
               <div className="flex flex-col items-center">
                 <span className="text-3xl font-bold text-gray-900">1M+</span>
                 <span className="text-sm text-gray-600">Products Analyzed</span>
@@ -56,9 +56,9 @@ export default function HomeHeroContent() {
             </div>
           </div>
         </div>
-      </div>
 
-      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
+        <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
+      </div>
     </Fragment>
   );
 }
