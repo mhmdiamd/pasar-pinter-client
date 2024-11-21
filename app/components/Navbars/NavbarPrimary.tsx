@@ -17,7 +17,7 @@ import { TUser } from "@/lib/types/user";
 import AnimatedButton from "../Animations/AnimatedButton";
 
 export default function Navbar() {
-  const [user, setUser] = useState<TUser | null>(null);
+  const [user, setUser] = useState<TUser | null>({});
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -215,7 +215,7 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
-            className={`fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl transform transition-transform duration-300 ${
+            className={`fixed inset-y-0 right-0 w-full bg-white shadow-xl transform transition-transform duration-300 ${
               mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -230,10 +230,10 @@ export default function Navbar() {
               </button>
             </div>
 
-            <div className="px-4 py-6 bg-white/80 backdrop-blur-md">
+            <div className="w-full px-4 py-6 bg-white shadow-lg shadow-indigo-100">
               {user ? (
                 <>
-                  <div className="flex items-center space-x-3 mb-6 p-4 bg-gray-50 rounded-lg">
+                  <div className="w-full flex items-center space-x-3 mb-6 p-4 bg-gray-50 rounded-lg">
                     <img
                       src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || "User")}`}
                       alt="Profile"
@@ -285,7 +285,7 @@ export default function Navbar() {
                   </div>
                 </>
               ) : (
-                <div className="space-y-1">
+                <div className="space-y-1 w-full bg-white/80">
                   <Link
                     href="/"
                     className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
