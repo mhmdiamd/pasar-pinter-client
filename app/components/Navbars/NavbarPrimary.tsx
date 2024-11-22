@@ -15,6 +15,7 @@ import Link from "next/link";
 import SearchDialog from "../Dialogs/SearchDialog";
 import { TUser } from "@/lib/types/user";
 import AnimatedButton from "../Animations/AnimatedButton";
+import NotificationDropdown from "../Dropdowns/NotificationDropdown";
 
 export default function Navbar() {
   const [user, setUser] = useState<TUser | null>({
@@ -79,9 +80,7 @@ export default function Navbar() {
 
               {user ? (
                 <div className="flex items-center space-x-4">
-                  <button className="text-gray-700 hover:text-indigo-600 p-2 rounded-full hover:bg-gray-100">
-                    <Bell className="h-5 w-5" />
-                  </button>
+                  <NotificationDropdown />
 
                   <HeadlessMenu as="div" className="relative">
                     <HeadlessMenu.Button className="flex items-center">
@@ -198,6 +197,8 @@ export default function Navbar() {
               >
                 <Search className="h-5 w-5" />
               </button>
+
+              <NotificationDropdown />
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="text-gray-700 hover:text-indigo-600 p-2"
