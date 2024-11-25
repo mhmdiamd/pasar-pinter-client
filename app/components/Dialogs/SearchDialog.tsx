@@ -4,9 +4,6 @@ import { useState, useEffect } from "react";
 import { Command } from "cmdk";
 import { Search, History, TrendingUp, Store, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
-import { Button } from "@/components/ui/button";
 
 interface SearchResult {
   id: string;
@@ -48,10 +45,9 @@ interface SearchDialogProps {
 }
 
 export default function SearchDialog({ open, onClose }: SearchDialogProps) {
-  const router = useRouter();
   const [query, setQuery] = useState("");
-  
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const stored = localStorage.getItem("recentSearches");
@@ -113,18 +109,11 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
                       onSelect={() => handleSearch(result.title)}
                       className="flex items-center gap-4 p-2 rounded hover:bg-gray-100 cursor-pointer"
                     >
-                      <div className="h-12 w-12 overflow-clip relative">
-                        <AspectRatio ratio={1 / 1}>
-                          <Image
-                            src={result.image}
-                            alt={result.title}
-                            width={48}
-                            height={48}
-                            unoptimized
-                            className="h-full w-full object-cover rounded"
-                          />
-                        </AspectRatio>
-                      </div>
+                      <img
+                        src={result.image}
+                        alt={result.title}
+                        className="w-12 h-12 object-cover rounded"
+                      />
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
                           {result.title}

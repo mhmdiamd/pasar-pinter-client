@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { AnimatePresence } from "framer-motion";
+import { ToastProvider } from "./components/Toasts/Toast";
+import ErrorBoundary from "./components/Errors/ErrorBoundary";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +31,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ErrorBoundary>
+          <ToastProvider>
+            <AnimatePresence mode="wait">{children}</AnimatePresence>
+          </ToastProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
