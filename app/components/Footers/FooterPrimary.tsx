@@ -20,8 +20,9 @@ const navigation = {
   ],
   legal: [
     { name: "Privacy", href: "/privacy" },
-    { name: "Terms", href: "/tnc" },
+    { name: "Terms", href: "/terms" },
     { name: "Cookie Policy", href: "/cookie-policy" },
+    { name: "Licenses", href: "/licenses" },
   ],
 };
 

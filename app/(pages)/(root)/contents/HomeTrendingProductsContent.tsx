@@ -62,7 +62,7 @@ export default function TrendingProducts() {
           </p>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none sm:grid-cols-2 lg:grid-cols-4">
           {products.map((product) => (
             <AnimatedCard key={product.id}>
               <article className="flex flex-col items-start bg-white rounded-lg shadow-sm overflow-hidden">
