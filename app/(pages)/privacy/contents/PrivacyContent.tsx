@@ -20,7 +20,7 @@ export default function PrivacyContent() {
                   </h2>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  SmartBuy collects information to provide better services to
+                  PasarPintar collects information to provide better services to
                   our users. We collect:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-600 ml-4">
@@ -89,7 +89,7 @@ export default function PrivacyContent() {
                 </p>
                 <p className="text-sm text-gray-500 mt-2">
                   For questions about our privacy policy, please contact
-                  privacy@smartbuy.com
+                  privacy@PasarPintar.com
                 </p>
               </section>
             </div>

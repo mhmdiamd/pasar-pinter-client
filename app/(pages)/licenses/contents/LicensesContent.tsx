@@ -18,7 +18,7 @@ export default function LicensesContent() {
                   </h2>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  SmartBuy platform usage terms:
+                  PasarPintar platform usage terms:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-600 ml-4">
                   <li>Personal use license</li>
@@ -84,7 +84,7 @@ export default function LicensesContent() {
                 </p>
                 <p className="text-sm text-gray-500 mt-2">
                   For questions about our licenses, please contact
-                  legal@smartbuy.com
+                  legal@PasarPintar.com
                 </p>
               </section>
             </div>

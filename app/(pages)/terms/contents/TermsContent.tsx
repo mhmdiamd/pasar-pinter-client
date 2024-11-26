@@ -20,7 +20,7 @@ export default function TermsContent() {
                   </h2>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  By using SmartBuy, you agree to:
+                  By using PasarPintar, you agree to:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-600 ml-4">
                   <li>Use the service for personal, non-commercial purposes</li>
@@ -72,7 +72,7 @@ export default function TermsContent() {
                   </h2>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  SmartBuy reserves the right to:
+                  PasarPintar reserves the right to:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-600 ml-4">
                   <li>Modify or terminate services</li>
@@ -88,7 +88,7 @@ export default function TermsContent() {
                 </p>
                 <p className="text-sm text-gray-500 mt-2">
                   For questions about our terms, please contact
-                  legal@smartbuy.com
+                  legal@PasarPintar.com
                 </p>
               </section>
             </div>
