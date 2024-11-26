@@ -88,7 +88,7 @@ export default function CookiePolicyContent() {
                 </p>
                 <p className="text-sm text-gray-500 mt-2">
                   For questions about our cookie policy, please contact
-                  privacy@smartbuy.com
+                  privacy@PasarPintar.com
                 </p>
               </section>
             </div>
