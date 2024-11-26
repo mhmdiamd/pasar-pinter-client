@@ -21,7 +21,6 @@ import {
   popularProducts,
   sortOptions,
 } from "./product-mock";
-import { hydrate } from "react-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const ProductsContent = () => {
