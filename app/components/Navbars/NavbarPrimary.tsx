@@ -139,7 +139,7 @@ export default function Navbar() {
                         <HeadlessMenu.Item>
                           {({ active }) => (
                             <Link
-                              href="/settings"
+                              href="/dashboard/settings"
                               className={`${
                                 active ? "bg-gray-100" : ""
                               } flex items-center px-4 py-2 text-sm text-gray-700`}
@@ -273,7 +273,7 @@ export default function Navbar() {
                       Saved Products
                     </Link>
                     <Link
-                      href="/settings"
+                      href="/dashboard/settings"
                       className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
                       onClick={() => setMobileMenuOpen(false)}
                     >
