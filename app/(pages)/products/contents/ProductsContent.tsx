@@ -14,7 +14,6 @@ import AnimatedPage from "@/app/components/Animations/AnimatedPage";
 import { useInfiniteScroll } from "@/app/hooks/useInfiniteScroll";
 import Link from "next/link";
 import { ProductCardSkeleton } from "@/app/components/Loadings/LoadingSkeleton";
-import Image from "next/image";
 import {
   categories,
   generateMockProducts,
@@ -69,11 +68,9 @@ const ProductsContent = () => {
                   className="bg-white rounded-lg shadow-sm overflow-hidden"
                 >
                   <div className="aspect-square relative">
-                    <Image
+                    <img
                       src={product.image}
                       alt={product.title}
-                      width={300}
-                      height={300}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-4 right-4">
@@ -226,11 +223,9 @@ const ProductsContent = () => {
                     <Link href={`/products/${product.id}`}>
                       <div className="aspect-square relative">
                         <AspectRatio ratio={1 / 1}>
-                          <Image
+                          <img
                             src={product.image}
                             alt={product.title}
-                            width={300}
-                            height={300}
                             className="object-cover"
                           />
                         </AspectRatio>
