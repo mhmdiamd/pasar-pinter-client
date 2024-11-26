@@ -1,6 +1,7 @@
+import AnimatedButton from "@/app/components/Animations/AnimatedButton";
 import AnimatedCard from "@/app/components/Animations/AnimatedCard";
 import { Button } from "@/components/ui/button";
-import { Heart, ExternalLink } from "lucide-react";
+import { Heart, ExternalLink, MoveRight } from "lucide-react";
 import Link from "next/link";
 
 const products = [
@@ -95,17 +96,27 @@ export default function TrendingProducts() {
                       {product.rating} ★ ({product.reviews} reviews)
                     </span>
                   </div>
-                  <Link
-                    href={`/products/${product.id}`}
-                    className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 mt-auto"
-                  >
-                    View Details
-                    <ExternalLink className="h-4 w-4" />
-                  </Link>
+                  {/* <Link */}
+                  {/*   href={`/products/${product.id}`} */}
+                  {/*   className="flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 mt-auto" */}
+                  {/* > */}
+                  {/*   View Details */}
+                  {/*   <ExternalLink className="h-4 w-4" /> */}
+                  {/* </Link> */}
                 </div>
               </article>
             </AnimatedCard>
           ))}
+        </div>
+        <div className="flex justify-center mt-10">
+          <AnimatedButton>
+            <Link
+              href="/products"
+              className="gap-x-3 min-w-[200px] inline-flex items-center justify-center rounded-md text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-indigo-600 text-white hover:bg-indigo-700 h-10 px-4 py-2"
+            >
+              See More <MoveRight />
+            </Link>
+          </AnimatedButton>
         </div>
       </div>
     </div>
